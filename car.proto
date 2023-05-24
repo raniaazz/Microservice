@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package dealership;
+
+message Car {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message GetCarRequest {
+  string car_id = 1;
+}
+
+message GetCarResponse {
+  Car car = 1;
+}
+
+message SearchCarsRequest {
+  string query = 1;
+}
+
+message SearchCarsResponse {
+  repeated Car cars = 1;
+}
+
+service CarService {
+  rpc GetCar(GetCarRequest) returns (GetCarResponse);
+  rpc SearchCars(SearchCarsRequest) returns (SearchCarsResponse);
+}

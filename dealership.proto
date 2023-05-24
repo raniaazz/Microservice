@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package dealership;
+
+message Dealership {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message GetDealershipRequest {
+  string dealership_id = 1;
+}
+
+message GetDealershipResponse {
+  Dealership dealership = 1;
+}
+
+message SearchDealershipsRequest {
+  string query = 1;
+}
+
+message SearchDealershipsResponse {
+  repeated Dealership dealerships = 1;
+}
+
+message CreateDealershipRequest {
+  string dealership_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message CreateDealershipResponse {
+  Dealership dealership = 1;
+}
+
+service DealershipService {
+  rpc GetDealership(GetDealershipRequest) returns (GetDealershipResponse);
+  rpc SearchDealerships(SearchDealershipsRequest) returns (SearchDealershipsResponse);
+  rpc CreateDealership(CreateDealershipRequest) returns (CreateDealershipResponse);
+}
